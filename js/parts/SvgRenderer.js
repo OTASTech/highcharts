@@ -3231,6 +3231,12 @@ extend(SVGRenderer.prototype, /** @lends Highcharts.SVGRenderer.prototype */ {
 			/*= if (build.classic) { =*/
 			obj.attr('fill', 'none');
 			/*= } =*/
+
+			// Add z-index to obj.element, where present. This will later be
+			// respected when calling .add().
+			if (options && options.zIndex) {
+				obj.attr('zIndex', options.zIndex);
+			}
 			
 			// expando properties for use in animate and attr
 			extend(obj, {
